@@ -1,0 +1,7 @@
+module HalfAdder(a,b,c,s);
+	input a,b;
+	output c,s;
+	
+	wire c = a & b;
+	wire s = a ^ b;
+endmodule
