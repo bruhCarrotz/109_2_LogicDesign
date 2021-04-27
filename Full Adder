@@ -1,0 +1,22 @@
+//full adder - logical
+
+module FullAdder(a,b,Cin,Cout,S);
+  input a,b,Cin;
+  output Cout,S;
+  
+  wire s = a ^ b ^ Cin;
+  wire Cout = (a&b) | Cin & (a^b)
+endmodule
+  
+ // full adder - from half adders
+
+ module FullAdder1(a,b,Cin,Cout,S);
+  input a,b,Cin;
+  output Cout,S;
+  
+  wire p, g;
+  wire cp;
+  
+  HalfAdder ha1(a,b,g,p);
+  HalfAdder ha2(Cin,p,cp,s);
+endmodule
