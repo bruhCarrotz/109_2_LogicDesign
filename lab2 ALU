@@ -58,7 +58,7 @@ module ALU(A,B,Cin,Mode,Y,Cout,Overflow);
 	assign Bneg = ~B+1;
 		
 	Adder_16bit adder0(.A(A), .B(B), .Cin(Cin), .S(sum),.Cout(Cout0));
-		Adder_16bit adder1(.A(A), .B(Bneg), .Cin(Cin), .S(sum1),.Cout(Cout1));
+	Adder_16bit adder1(.A(A), .B(Bneg), .Cin(Cin), .S(sum1),.Cout(Cout1));
 
 	always@(*)begin
 		case(Mode)
