@@ -1,0 +1,47 @@
+module kevin_verilog_G(in,out);
+       parameter n=4;
+       input[n-1:0]in;
+       output out;
+  
+       wire not_a,not_b,not_c,not_d;
+       wire and0,and1,and2,and3,and4,and5;
+  
+       not not_gate0(not_a,in[3]);
+       not not_gate1(not_b,in[2]);
+       not not_gate2(not_c,in[1]);
+       not not_gate3(not_d,in[0]);
+
+       and and0_gate(and0,not_a,not_c,in[0]);
+       and and1_gate(and1,not_a,in[2],in[0]);
+       and and3_gate(and2,not_b,not_c,in[0]);
+       and and3_gate(and3,in[3],in[1],not_d);
+       and and4_gate(and4,in[3],in[2],not_d);
+       and and5_gate(and5,not_a,in[2],in[1]);
+
+       or or0_gate(out,and0,and1,and2,and3,and4,and5);
+ 
+endmodule
+module kevin_verilog_D(in,out);
+       parameter n=4;
+       input[n-1:0]in;
+       output out;
+
+       assign out=(!in[3]&!in[1]&in[0])|(!in[2]&!in[1]&in[0])|(in[3]&in[2]&!in[0])|(in[3]&in[1]&!in[0])|(!in[3]&in[2]&in[1])|(!in[3]&in[2]&in[0]);
+ 
+endmodule
+module kevin_verilog_B(in,out);
+       parameter n=4;
+       
+       input [n-1:0]in;
+       output out;
+       reg out;
+
+       always@(*)begin
+          out=1'b0;
+          case(in)
+              1,5,6,7,9,10,12,14:begin
+                  out=1'b1;
+              end
+          endcase
+      end
+endmodule                    
